@@ -1,21 +1,14 @@
-[![npm version](https://badge.fury.io/js/react-form-builder2.svg)](//npmjs.com/package/react-form-builder2)
-[![downloads](https://img.shields.io/npm/dm/react-form-builder2.svg)](https://img.shields.io/npm/dm/react-form-builder2.svg)
+[![npm version](https://badge.fury.io/js/react-form-builder6.svg)](//npmjs.com/package/react-form-builder6)
+[![downloads](https://img.shields.io/npm/dm/react-form-builder6.svg)](https://img.shields.io/npm/dm/react-form-builder6.svg)
 
-# React Form Builder 2
+# React Form Builder 3
+
+Forked from [Kiho Chang](https://github.com/Kiho/react-form-builder) for react updates.
 
 A complete react form builder that interfaces with a json endpoint to load and save generated forms.
 
-- Upgraded to React 16.8.6
-- Bootstrap 4.x, Font-Awesome 5.x
-- Use react-dnd for Drag & Drop
-- Save form data with dummy api server
-- Show posted data on readonly form
-- Multi column row
-- Custom Components
-
-[DEMO](https://kiho.github.io/react-form-builder/) Slow Loading.... back-end is running at FREE Heroku, hence it may not work if free time runs out for month.
-
-![](screenshot.png)
+- Upgraded to React 18.3.1
+- Upgraded related packages
 
 ### Editing Items
 
@@ -26,8 +19,8 @@ A complete react form builder that interfaces with a json endpoint to load and s
 ```javascript
 import React from "react";
 import ReactDOM from "react-dom";
-import { ReactFormBuilder } from "react-form-builder2";
-import "react-form-builder2/dist/app.css";
+import { ReactFormBuilder } from "react-form-builder6";
+import "react-form-builder6/dist/app.css";
 
 ReactDOM.render(<ReactFormBuilder />, document.body);
 ```
@@ -66,8 +59,8 @@ Now that a form is built and saved, let's generate it from the saved json.
 ```javascript
 import React from "react";
 import ReactDOM from "react-dom";
-import { ReactFormGenerator } from "react-form-builder2";
-import "react-form-builder2/dist/app.css";
+import { ReactFormGenerator } from "react-form-builder6";
+import "react-form-builder6/dist/app.css";
 
 ReactDOM.render(
   <ReactFormGenerator
@@ -178,10 +171,10 @@ Then navigate to http://localhost:8080/ in your browser and you should be able t
 
 # Custom Components
 
-- Import component registry from react-form-builder2
+- Import component registry from react-form-builder6
 
 ```jsx
-import { ReactFormBuilder, ElementStore, Registry } from "react-form-builder2";
+import { ReactFormBuilder, ElementStore, Registry } from "react-form-builder6";
 ```
 
 - Simple Custom Component

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
 import cx from 'classnames';
 
 /**
@@ -54,26 +53,9 @@ export default class StarRating extends React.Component {
     return stars;
   }
 
-  // componentWillMount() {
-  //   this.min = 0;
-  //   this.max = this.props.ratingAmount || 5;
-  //   if (this.props.rating) {
-  //     this.state.editing = this.props.editing || false;
-  //     const ratingVal = this.props.rating;
-  //     this.state.ratingCache.pos = this.getStarRatingPosition(ratingVal);
-  //     this.state.ratingCache.rating = ratingVal;
-
-  //     this.setState({
-  //       ratingCache: this.state.ratingCache,
-  //       rating: ratingVal,
-  //       pos: this.getStarRatingPosition(ratingVal),
-  //     });
-  //   }
-  // }
-
   componentDidMount() {
-    this.root = ReactDOM.findDOMNode(this.rootNode);
-    this.ratingContainer = ReactDOM.findDOMNode(this.node);
+    this.root = this.rootNode;
+    this.ratingContainer = this.node;
   }
 
   componentWillUnmount() {
@@ -90,13 +72,18 @@ export default class StarRating extends React.Component {
   }
 
   getDecimalPlaces(num) {
-    const match = (`${num}`).match(/(?:\.(\d+))?(?:[eE]([+-]?\d+))?$/);
-    return !match ? 0 : Math.max(0, (match[1] ? match[1].length : 0) - (match[2] ? +match[2] : 0));
+    const match = `${num}`.match(/(?:\.(\d+))?(?:[eE]([+-]?\d+))?$/);
+    return !match
+      ? 0
+      : Math.max(
+          0,
+          (match[1] ? match[1].length : 0) - (match[2] ? +match[2] : 0)
+        );
   }
 
   getWidthFromValue(val) {
-    const min = this.min;
-    const max = this.max;
+    const { min } = this;
+    const { max } = this;
 
     if (val <= min || min === max) {
       return 0;
@@ -113,7 +100,10 @@ export default class StarRating extends React.Component {
     const diff = this.max - this.min;
     let factor = (diff * pos) / (maxWidth * this.props.step);
     factor = Math.ceil(factor);
-    let val = this.applyPrecision(parseFloat(this.min + factor * this.props.step), precision);
+    let val = this.applyPrecision(
+      parseFloat(this.min + factor * this.props.step),
+      precision
+    );
     val = Math.max(Math.min(val, this.max), this.min);
     return val;
   }
@@ -138,9 +128,17 @@ export default class StarRating extends React.Component {
 
   getSvg() {
     return (
-      <svg className="react-star-rating__star" viewBox="0 0 286 272" version="1.1" xmlns="http://www.w3.org/2000/svg">
-        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-          <polygon id="star-flat" points="143 225 54.8322122 271.352549 71.6707613 173.176275 0.341522556 103.647451 98.9161061 89.3237254 143 0 187.083894 89.3237254 285.658477 103.647451 214.329239 173.176275 231.167788 271.352549 "></polygon>
+      <svg
+        className="react-star-rating__star"
+        viewBox="0 0 286 272"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+          <polygon
+            id="star-flat"
+            points="143 225 54.8322122 271.352549 71.6707613 173.176275 0.341522556 103.647451 98.9161061 89.3237254 143 0 187.083894 89.3237254 285.658477 103.647451 214.329239 173.176275 231.167788 271.352549 "
+          ></polygon>
         </g>
       </svg>
     );
@@ -156,10 +154,7 @@ export default class StarRating extends React.Component {
   handleMouseMove(e) {
     // get hover position
     const ratingEvent = this.getRatingEvent(e);
-    this.updateRating(
-      ratingEvent.width,
-      ratingEvent.val,
-    );
+    this.updateRating(ratingEvent.width, ratingEvent.val);
   }
 
   updateRating(width, val) {
@@ -173,11 +168,14 @@ export default class StarRating extends React.Component {
     if (nextProps !== this.props) {
       this.updateRating(
         this.getStarRatingPosition(nextProps.rating),
-        nextProps.rating,
+        nextProps.rating
       );
       return true;
     }
-    return nextState.ratingCache.rating !== this.state.ratingCache.rating || nextState.rating !== this.state.rating;
+    return (
+      nextState.ratingCache.rating !== this.state.ratingCache.rating ||
+      nextState.rating !== this.state.rating
+    );
   }
 
   handleClick(e) {
@@ -188,15 +186,21 @@ export default class StarRating extends React.Component {
       return false;
     }
 
+    // Get the current rating based on click position
+    const ratingEvent = this.getRatingEvent(e);
+
     const ratingCache = {
-      pos: this.state.pos,
-      rating: this.state.rating,
+      pos: ratingEvent.width,
+      rating: ratingEvent.val,
       caption: this.props.caption,
       name: this.props.name,
     };
 
+    // Update the state with new values
     this.setState({
       ratingCache,
+      pos: ratingEvent.width,
+      rating: ratingEvent.val,
     });
 
     this.props.onRatingClick(e, ratingCache);
@@ -219,39 +223,58 @@ export default class StarRating extends React.Component {
       'rating-editing': this.state.editing,
     });
 
-    // is there a caption?
-    // if (this.props.caption) {
-    //   caption = (<span className="react-rating-caption">{this.props.caption}</span>);
-    // }
-
     // are we editing this rating?
     let starRating;
     if (this.state.editing) {
       starRating = (
-        <div ref={c => this.node = c}
+        <div
+          ref={(c) => (this.node = c)}
           className="rating-container rating-gly-star"
           data-content={this.state.glyph}
           onMouseMove={this.handleMouseMove.bind(this)}
           onMouseLeave={this.handleMouseLeave.bind(this)}
-          onClick={this.handleClick.bind(this)}>
-          <div className="rating-stars" data-content={this.state.glyph} style={{ width: this.state.pos }}></div>
+          onClick={this.handleClick.bind(this)}
+        >
+          <div
+            className="rating-stars"
+            data-content={this.state.glyph}
+            style={{ width: this.state.pos }}
+          ></div>
         </div>
       );
     } else {
       starRating = (
-        <div ref={c => this.node = c} className="rating-container rating-gly-star" data-content={this.state.glyph}>
-          <div className="rating-stars" data-content={this.state.glyph} style={{ width: this.state.pos }}></div>
+        <div
+          ref={(c) => (this.node = c)}
+          className="rating-container rating-gly-star"
+          data-content={this.state.glyph}
+        >
+          <div
+            className="rating-stars"
+            data-content={this.state.glyph}
+            style={{ width: this.state.pos }}
+          ></div>
         </div>
       );
     }
 
     return (
       <span className="react-star-rating">
-        <span ref={c => this.rootNode = c} style={{ cursor: 'pointer' }} className={classes}>
+        <span
+          ref={(c) => (this.rootNode = c)}
+          style={{ cursor: 'pointer' }}
+          className={classes}
+        >
           {starRating}
-          <input type="hidden" name={this.props.name} value={this.state.ratingCache.rating} style={{ display: 'none !important' }} min={this.min} max={this.max} readOnly style={{
-            width: 65,
-          }}/>
+          <input
+            type="hidden"
+            name={this.props.name}
+            value={this.state.rating || 0}
+            style={{ display: 'none !important', width: 65 }}
+            min={this.min}
+            max={this.max}
+            readOnly
+          />
         </span>
       </span>
     );

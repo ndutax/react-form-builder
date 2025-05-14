@@ -19,10 +19,10 @@ function getItemStyles(initialOffset, currentOffset) {
       display: 'none',
     };
   }
-  
+
   const { x, y } = currentOffset;
   const transform = `translate(${x}px, ${y}px)`;
-  
+
   return {
     transform,
     WebkitTransform: transform,
@@ -30,19 +30,14 @@ function getItemStyles(initialOffset, currentOffset) {
 }
 
 const CustomDragLayer = () => {
-  const {
-    itemType,
-    isDragging,
-    item,
-    initialOffset,
-    currentOffset
-  } = useDragLayer((monitor) => ({
-    item: monitor.getItem(),
-    itemType: monitor.getItemType(),
-    initialOffset: monitor.getInitialSourceClientOffset(),
-    currentOffset: monitor.getSourceClientOffset(),
-    isDragging: monitor.isDragging(),
-  }));
+  const { itemType, isDragging, item, initialOffset, currentOffset } =
+    useDragLayer((monitor) => ({
+      item: monitor.getItem(),
+      itemType: monitor.getItemType(),
+      initialOffset: monitor.getInitialSourceClientOffset(),
+      currentOffset: monitor.getSourceClientOffset(),
+      isDragging: monitor.isDragging(),
+    }));
 
   function renderItem() {
     switch (itemType) {

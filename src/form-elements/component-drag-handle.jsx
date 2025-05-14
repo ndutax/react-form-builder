@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { useDrag } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import ItemTypes from '../ItemTypes';
@@ -8,11 +8,9 @@ const style = {
 };
 
 const DragHandle = (props) => {
-  const {
-    data, index, onDestroy, setAsChild, getDataById,
-  } = props;
+  const { data, index, onDestroy, setAsChild, getDataById } = props;
 
-  const [{ isDragging }, dragRef, dragPreviewRef] = useDrag({
+  const [, dragRef, dragPreviewRef] = useDrag({
     type: ItemTypes.BOX,
     item: () => ({
       itemType: ItemTypes.BOX,
