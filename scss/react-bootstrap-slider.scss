@@ -30,6 +30,11 @@ $slider-gray-6: #F9F9F9;
   vertical-align: middle;
   position: relative;
 
+  // Hide tooltips only within slider component
+  .tooltip {
+    display: none !important;
+  }
+
   &.slider-horizontal {
     width: $slider-horizontal-width;
     height: $slider-line-height;
