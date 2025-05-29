@@ -1,13 +1,13 @@
 {
-  "name": "@threehippies/react-form-builder",
-  "version": "0.20.6",
+  "name": "react-form-builder2",
+  "version": "0.20.1",
   "description": "A complete form builder for react.",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Three-Hippies/react-form-builder.git"
+    "url": "git+https://github.com/Kiho/react-form-builder.git"
   },
   "files": [
     "lib",
@@ -24,9 +24,9 @@
     "drop"
   ],
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=20.0.0"
   },
-  "author": "Ian Morse",
+  "author": "Kiho Chang",
   "dependencies": {
     "beedle": "^0.8.1",
     "classnames": "^2.2.6",
