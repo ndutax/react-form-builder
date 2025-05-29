@@ -1,9 +1,7 @@
 [![npm version](https://badge.fury.io/js/react-form-builder6.svg)](//npmjs.com/package/react-form-builder6)
 [![downloads](https://img.shields.io/npm/dm/react-form-builder6.svg)](https://img.shields.io/npm/dm/react-form-builder6.svg)
 
-# React Form Builder 3
-
-Forked from [Kiho Chang](https://github.com/Kiho/react-form-builder) for react updates.
+# React Form Builder 2
 
 A complete react form builder that interfaces with a json endpoint to load and save generated forms.
 
@@ -171,10 +169,10 @@ Then navigate to http://localhost:8080/ in your browser and you should be able t
 
 # Custom Components
 
-- Import component registry from react-form-builder6
+- Import component registry from react-form-builder2
 
 ```jsx
-import { ReactFormBuilder, ElementStore, Registry } from "react-form-builder6";
+import { ReactFormBuilder, ElementStore, Registry } from "react-form-builder2";
 ```
 
 - Simple Custom Component
