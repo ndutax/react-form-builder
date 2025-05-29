@@ -1,6 +1,6 @@
 {
   "name": "react-form-builder2",
-  "version": "0.20.1",
+  "version": "0.20.2",
   "description": "A complete form builder for react.",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
@@ -24,7 +24,7 @@
     "drop"
   ],
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=18.0.0"
   },
   "author": "Kiho Chang",
   "dependencies": {
