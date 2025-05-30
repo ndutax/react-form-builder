@@ -1,5 +1,5 @@
-[![npm version](https://badge.fury.io/js/react-form-builder6.svg)](//npmjs.com/package/react-form-builder6)
-[![downloads](https://img.shields.io/npm/dm/react-form-builder6.svg)](https://img.shields.io/npm/dm/react-form-builder6.svg)
+[![npm version](https://badge.fury.io/js/react-form-builder2.svg)](//npmjs.com/package/react-form-builder2)
+[![downloads](https://img.shields.io/npm/dm/react-form-builder2.svg)](https://img.shields.io/npm/dm/react-form-builder2.svg)
 
 # React Form Builder 2
 
@@ -17,8 +17,8 @@ A complete react form builder that interfaces with a json endpoint to load and s
 ```javascript
 import React from "react";
 import ReactDOM from "react-dom";
-import { ReactFormBuilder } from "react-form-builder6";
-import "react-form-builder6/dist/app.css";
+import { ReactFormBuilder } from "react-form-builder2";
+import "react-form-builder2/dist/app.css";
 
 ReactDOM.render(<ReactFormBuilder />, document.body);
 ```
@@ -57,8 +57,8 @@ Now that a form is built and saved, let's generate it from the saved json.
 ```javascript
 import React from "react";
 import ReactDOM from "react-dom";
-import { ReactFormGenerator } from "react-form-builder6";
-import "react-form-builder6/dist/app.css";
+import { ReactFormGenerator } from "react-form-builder2";
+import "react-form-builder2/dist/app.css";
 
 ReactDOM.render(
   <ReactFormGenerator
