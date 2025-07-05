@@ -1,6 +1,6 @@
 {
   "name": "react-form-builder2",
-  "version": "0.20.3",
+  "version": "0.20.4",
   "description": "A complete form builder for react.",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
@@ -28,6 +28,8 @@
   },
   "author": "Kiho Chang",
   "dependencies": {
+    "@ant-design/icons": "^6.0.0",
+    "antd": "^5.26.3",
     "beedle": "^0.8.1",
     "classnames": "^2.2.6",
     "date-fns": "^2.16.1",
