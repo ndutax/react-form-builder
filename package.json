@@ -1,6 +1,6 @@
 {
   "name": "react-form-builder2",
-  "version": "0.20.4",
+  "version": "0.20.5",
   "description": "A complete form builder for react.",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
@@ -9,11 +9,7 @@
     "type": "git",
     "url": "git+https://github.com/Kiho/react-form-builder.git"
   },
-  "files": [
-    "lib",
-    "dist",
-    "types"
-  ],
+  "files": [],
   "keywords": [
     "react",
     "react-component",
